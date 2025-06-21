@@ -46,7 +46,7 @@ namespace Ryujinx.UI.Common.Helper
         }
 
         [SupportedOSPlatform("linux")]
-        private static bool AreMimeTypesRegisteredLinux() => File.Exists(Path.Combine(_mimeDbPath, "packages", "Ryujinx.xml"));
+        private static bool AreMimeTypesRegisteredLinux() => File.Exists(Path.Combine(_mimeDbPath, "packages", "Kenjinx.xml"));
 
         [SupportedOSPlatform("linux")]
         private static bool InstallLinuxMimeTypes(bool uninstall = false)
@@ -55,7 +55,7 @@ namespace Ryujinx.UI.Common.Helper
 
             if ((uninstall && AreMimeTypesRegisteredLinux()) || (!uninstall && !AreMimeTypesRegisteredLinux()))
             {
-                string mimeTypesFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mime", "Ryujinx.xml");
+                string mimeTypesFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mime", "Kenjinx.xml");
                 string additionalArgs = !uninstall ? "--novendor" : "";
 
                 using Process mimeProcess = new();
@@ -110,7 +110,7 @@ namespace Ryujinx.UI.Common.Helper
                 
                 string keyValue = (string)openCmd.GetValue("");
 
-                return keyValue is not null && (keyValue.Contains("Ryujinx") || keyValue.Contains(AppDomain.CurrentDomain.FriendlyName));
+                return keyValue is not null && (keyValue.Contains("Kenjinx") || keyValue.Contains(AppDomain.CurrentDomain.FriendlyName));
             }
         }
 
@@ -132,7 +132,7 @@ namespace Ryujinx.UI.Common.Helper
 
                 if (uninstall)
                 {
-                    // If the types don't already exist, there's nothing to do, and we can call this operation successful.
+                    // If the types don't already exist, there's nothing to do and we can call this operation successful.
                     if (!AreMimeTypesRegisteredWindows())
                     {
                         return true;

@@ -1,4 +1,3 @@
-using Ryujinx.Common;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
@@ -71,7 +70,7 @@ namespace Ryujinx.Cpu.Signal
             int result;
             SigAction old;
 
-            if (PlatformInfo.IsBionic)
+            if (Ryujinx.Common.PlatformInfo.IsBionic)
             {
                 result = sigaction(SIGSEGV, IntPtr.Zero, out SigActionBionic tmp);
 
@@ -101,7 +100,7 @@ namespace Ryujinx.Cpu.Signal
             int result;
             SigAction old;
 
-            if (PlatformInfo.IsBionic)
+            if (Ryujinx.Common.PlatformInfo.IsBionic)
             {
                 SigActionBionic sig = new()
                 {
@@ -188,7 +187,7 @@ namespace Ryujinx.Cpu.Signal
         {
             int result;
 
-            if (PlatformInfo.IsBionic)
+            if (Ryujinx.Common.PlatformInfo.IsBionic)
             {
                 SigActionBionic sig = new()
                 {
@@ -236,7 +235,7 @@ namespace Ryujinx.Cpu.Signal
 
         public static bool RestoreExceptionHandler(SigAction oldAction)
         {
-            if (PlatformInfo.IsBionic)
+            if (Ryujinx.Common.PlatformInfo.IsBionic)
             {
                 SigActionBionic tmp = new SigActionBionic
                 {

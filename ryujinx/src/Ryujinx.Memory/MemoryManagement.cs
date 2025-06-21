@@ -1,4 +1,3 @@
-using Ryujinx.Common;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -13,7 +12,7 @@ namespace Ryujinx.Memory
             {
                 return MemoryManagementWindows.Allocate((IntPtr)size);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 return MemoryManagementUnix.Allocate(size, forJit);
             }
@@ -29,7 +28,7 @@ namespace Ryujinx.Memory
             {
                 return MemoryManagementWindows.Reserve((IntPtr)size, viewCompatible);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 return MemoryManagementUnix.Reserve(size, forJit);
             }
@@ -45,7 +44,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.Commit(address, (IntPtr)size);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.Commit(address, size, forJit);
             }
@@ -61,7 +60,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.Decommit(address, (IntPtr)size);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.Decommit(address, size);
             }
@@ -77,7 +76,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.MapView(sharedMemory, srcOffset, address, (IntPtr)size, owner);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.MapView(sharedMemory, srcOffset, address, size);
             }
@@ -93,7 +92,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.UnmapView(sharedMemory, address, (IntPtr)size, owner);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.UnmapView(address, size);
             }
@@ -111,7 +110,7 @@ namespace Ryujinx.Memory
             {
                 result = MemoryManagementWindows.Reprotect(address, (IntPtr)size, permission, forView);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 result = MemoryManagementUnix.Reprotect(address, size, permission);
             }
@@ -132,7 +131,7 @@ namespace Ryujinx.Memory
             {
                 return MemoryManagementWindows.Free(address, (IntPtr)size);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 return MemoryManagementUnix.Free(address);
             }
@@ -148,7 +147,7 @@ namespace Ryujinx.Memory
             {
                 return MemoryManagementWindows.CreateSharedMemory((IntPtr)size, reserve);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 return MemoryManagementUnix.CreateSharedMemory(size, reserve);
             }
@@ -164,7 +163,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.DestroySharedMemory(handle);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.DestroySharedMemory(handle);
             }
@@ -180,7 +179,7 @@ namespace Ryujinx.Memory
             {
                 return MemoryManagementWindows.MapSharedMemory(handle);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 return MemoryManagementUnix.MapSharedMemory(handle, size);
             }
@@ -196,7 +195,7 @@ namespace Ryujinx.Memory
             {
                 MemoryManagementWindows.UnmapSharedMemory(address);
             }
-            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || PlatformInfo.IsBionic)
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || Common.PlatformInfo.IsBionic)
             {
                 MemoryManagementUnix.UnmapSharedMemory(address, size);
             }
