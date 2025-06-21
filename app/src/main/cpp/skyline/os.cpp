@@ -107,4 +107,12 @@ namespace skyline::kernel {
                 throw exception("Unsupported ROM extension.");
         }
     }
+
+    void OS::SetNvDecActive(bool active) {
+        nvdec_active = active;
+    }
+
+    bool OS::GetNvDecActive() const {
+        return nvdec_active;
+    }
 }

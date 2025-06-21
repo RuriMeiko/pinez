@@ -26,6 +26,8 @@ namespace skyline::kernel {
         DeviceState state;
         service::ServiceManager serviceManager;
 
+        bool nvdec_active{false};
+
         /**
          * @param settings An instance of the Settings class
          * @param window The ANativeWindow object to draw the screen to
@@ -50,5 +52,8 @@ namespace skyline::kernel {
         void Execute(int romFd, std::vector<int> dlcFds, int updateFd, loader::RomFormat romType);
 
         std::shared_ptr<loader::Loader> GetLoader(int fd, std::shared_ptr<crypto::KeyStore> keyStore, loader::RomFormat romType);
+
+        void SetNvDecActive(bool active);
+        [[nodiscard]] bool GetNvDecActive() const;
     };
 }
